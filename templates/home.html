@@ -2,13 +2,20 @@
 
 {% block content %}
     <h1>Home</h1>
+
+    <ul>
+        {% for item in my_list %}
+            <li>{{ forloop.counter }}:::{{ item }}</li>
+        {% endfor %}
+    </ul>
+
     <h1>My text is : {{ my_text }}</h1>
     <h1>My number is : {{ my_number }}</h1>
     <h1>My list is : {{ my_list }}</h1>
 
 
     {% for item in my_list %}
-        <h6>{{item}}</h6>
+        <h6>{{ item }}</h6>
     {% endfor %}
 
 {% endblock %}
