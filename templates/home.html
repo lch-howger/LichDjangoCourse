@@ -3,6 +3,9 @@
 {% block content %}
     <h1>Home</h1>
 
+    {{ my_html }}
+    {{ my_html|safe }}
+
     <ul>
         {% for item in my_list %}
             <li>{{ forloop.counter }}:::{{ item }}</li>
