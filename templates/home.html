@@ -3,6 +3,12 @@
 {% block content %}
     <h1>Home</h1>
 
+    <ul>
+        {% for item in my_products %}
+            <li>{{ item.title }}</li>
+        {% endfor %}
+    </ul>
+
     {{ my_html }}
     {{ my_html|safe }}
 
