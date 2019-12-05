@@ -5,7 +5,11 @@ from django.shortcuts import render
 
 # Create your views here.
 def home_view(request):
-    return render(request, 'home.html')
+    my_context={
+        'my_text':'This is my text.',
+        'my_number': 123
+    }
+    return render(request, 'home.html',my_context)
 
 
 def contact_view(*args, **kwargs):
