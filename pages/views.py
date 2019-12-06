@@ -33,6 +33,9 @@ def products_detail_view(request):
 
 
 def create_view(request):
+    get = request.POST.get('title')
+    print(get)
+
     form = ProductForm(request.POST or None)
     if form.is_valid():
         form.save()
