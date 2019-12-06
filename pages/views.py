@@ -36,6 +36,7 @@ def create_view(request):
     form = ProductForm(request.POST or None)
     if form.is_valid():
         form.save()
+        form = ProductForm()
 
     my_context = {
         'form': form

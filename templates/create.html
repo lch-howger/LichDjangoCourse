@@ -1,4 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
     <h1>Let's create a product</h1>
+
+    <form method="post"> {% csrf_token %}
+        {{ form.as_p }}
+        <input type="submit" value="Save">
+    </form>
+
+
+
 {% endblock %}
