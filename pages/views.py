@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.shortcuts import render
 from products.models import Product
-from products.forms import ProductForm
+from products.forms import ProductForm, RawProductForm
 
 
 # Create your views here.
@@ -33,18 +33,32 @@ def products_detail_view(request):
 
 
 def create_view(request):
-    get = request.POST.get('title')
-    print(get)
-
-    form = ProductForm(request.POST or None)
-    if form.is_valid():
-        form.save()
-        form = ProductForm()
+    form = RawProductForm()
+    if request.method=='POST':
+        form = RawProductForm(request.POST)
+        if form.is_valid():
+            Product.objects.create(**form.cleaned_data)
 
     my_context = {
         'form': form
     }
     return render(request, 'create.html', my_context)
+
+
+# def create_view(request):
+#     if request.method=='POST':
+#         get = request.POST.get('title')
+#         print(get)
+#
+#     form = ProductForm(request.POST or None)
+#     if form.is_valid():
+#         form.save()
+#         form = ProductForm()
+#
+#     my_context = {
+#         'form': form
+#     }
+#     return render(request, 'create.html', my_context)
 
 
 def contact_view(*args, **kwargs):
