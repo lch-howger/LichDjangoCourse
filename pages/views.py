@@ -24,5 +24,17 @@ def products_view(request):
     return render(request, 'products.html', my_context)
 
 
+def products_detail_view(request):
+    obj=Product.objects.get(id=1)
+
+    my_context = {'obj': obj}
+    return render(request, 'detail.html', my_context)
+
+
+def create_view(request):
+    my_context = {}
+    return render(request, 'create.html', my_context)
+
+
 def contact_view(*args, **kwargs):
     return HttpResponse('<h1>Hello World</h1>')
